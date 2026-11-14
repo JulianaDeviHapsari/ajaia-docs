@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: ajaia-docs
+    runtime: docker
+    plan: free
+    healthCheckPath: /api/health
+    envVars:
+      - key: DB_FILE
+        value: /data/ajaia.db
+# Free plan has an ephemeral disk: data resets to the seed data on restart.
+# To persist data, switch to a paid plan and add:
+#   disk: { name: data, mountPath: /data, sizeGB: 1 }
